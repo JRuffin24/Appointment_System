@@ -17,7 +17,7 @@ namespace Appointment_System
     public partial class AddAppointment : Form
     {
 
-        public static string connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=passw0rd!;";
+        public static string connectionString = "server=127.0.0.1;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!;";
         public static int appointmentId;
         public static DataTable dt = new DataTable();
 
