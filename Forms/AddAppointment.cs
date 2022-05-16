@@ -53,7 +53,7 @@ namespace Appointment_System
 
 
             //DateTime start = TimeZoneInfo.ConvertTimeToUtc(StartPicker.Value);
-            //DateTime end = TimeZoneInfo.ConvertTimeToUtc(EndPicker.Value); 
+            //DateTime end = TimeZoneInfo.ConvertTimeToUtc(EndPicker.Value);
 
             DateTime start = StartPicker.Value;
             DateTime end = EndPicker.Value;
