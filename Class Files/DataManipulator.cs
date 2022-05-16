@@ -12,7 +12,8 @@ namespace Appointment_System
     {
         public static int currentUserId;
         public static string currentUserName;
-        public static string connectionString = "server=127.0.0.1;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!;";
+        //public static string connectionString = "server=127.0.0.1;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!;";
+        public static string connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=passw0rd!;";
         public static string currentCustomerAddress;
         public static int currentCustomerId;
         public static string currentCustomerName;
