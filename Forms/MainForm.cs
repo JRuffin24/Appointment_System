@@ -38,11 +38,6 @@ namespace Appointment_System
             reminderCheck(calendarDataGrid);
         }
 
-        //public static void ReminderCheck(ref DataTable dataTable)
-        //{
-
-
-        //}
 
         static public void reminderCheck(DataGridView calendar)
         {

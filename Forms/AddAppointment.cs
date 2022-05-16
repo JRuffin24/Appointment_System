@@ -137,15 +137,6 @@ namespace Appointment_System
                 return true; 
             }
 
-            //if (startingTime.TimeOfDay > BusinessStartTime.TimeOfDay && startingTime.TimeOfDay < BusinessEndTime.TimeOfDay
-            //   && endingTime.TimeOfDay > BusinessStartTime.TimeOfDay && endingTime.TimeOfDay < BusinessEndTime.TimeOfDay)
-            //{
-            //    return false;
-            //}
-            //return true;
-
-            //Func<double, double> cube = x => x * x * x;
-
 
         }
 
