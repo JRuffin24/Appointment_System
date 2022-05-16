@@ -25,9 +25,7 @@ namespace Appointment_System
 
         private void CreateCustSaveButton_Click(object sender, EventArgs e)
         {
-            //get info from textboxes (Name, address, address 2, city name, country name, phone number) 
-            //Insert into Customer Table 
-            //int minValuePostalCode = 0;
+       
             string name = NameTextBox.Text;
             string address = AddressTextBox.Text;
             string address2 = Address2TextBox.Text;
