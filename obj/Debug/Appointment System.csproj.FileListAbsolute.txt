@@ -1,0 +1,15 @@
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment System.csproj.AssemblyReference.cache
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment System.exe.config
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.AddAppointmentCustomerSelectionForm.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.AddAppointment.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.AppointmentSelectionForm.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.CreateCustomer.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.CustomerReports.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.LoginScreen.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.MainForm.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.Properties.Resources.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.UpdateOrDeleteAppointment.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.UpdateOrDeleteCustomer.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment_System.UpdateCustomerSelectionForm.resources
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment System.csproj.GenerateResource.cache
+C:\Users\LabUser\Source\Repos\JRuffin24\Appointment_System\obj\Debug\Appointment System.csproj.CoreCompileInputs.cache

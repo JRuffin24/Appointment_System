@@ -51,8 +51,11 @@ namespace Appointment_System
 
 
 
-            DateTime start = TimeZoneInfo.ConvertTimeToUtc(StartPicker.Value);
-            DateTime end = TimeZoneInfo.ConvertTimeToUtc(EndPicker.Value); 
+            //DateTime start = TimeZoneInfo.ConvertTimeToUtc(StartPicker.Value);
+           // DateTime end = TimeZoneInfo.ConvertTimeToUtc(EndPicker.Value); 
+
+            DateTime start = StartPicker.Value;
+            DateTime end = EndPicker.Value; 
 
             string ApptType = ApptTypeComboBox.Text;
             int CustId = int.Parse(AddApptCustIDTextBox.Text);
@@ -123,14 +126,17 @@ namespace Appointment_System
             DateTime BusinessStartTime = DateTime.Today.AddHours(8); //8:00AM
             DateTime BusinessEndTime = DateTime.Today.AddHours(17); //5PM
 
-            if (startingTime.TimeOfDay > BusinessStartTime.TimeOfDay && startingTime.TimeOfDay < BusinessEndTime.TimeOfDay
-                && endingTime.TimeOfDay > BusinessStartTime.TimeOfDay && endingTime.TimeOfDay < BusinessEndTime.TimeOfDay)
+            if ((startingTime > BusinessStartTime) && (startingTime < BusinessEndTime)
+                && (endingTime > BusinessStartTime) && (endingTime < BusinessEndTime))
             {
                 return false;
             }
-            return true;
+            else
+            {
+                return true;
+            }
 
-            //Func<double, double> cube = x => x * x * x;
+           
 
             
         }

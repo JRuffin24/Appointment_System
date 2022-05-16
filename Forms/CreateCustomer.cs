@@ -31,7 +31,7 @@ namespace Appointment_System
             string address = AddressTextBox.Text;
             string address2 = Address2TextBox.Text;
             string cityName = CityNameTextBox.Text;
-            int postalCode = Int32.Parse(PostalCodeTextBox.Text);
+            string postalCode = PostalCodeTextBox.Text;
             string countryName = CountryNameTextBox.Text;
             string phoneNumber = PhoneNumberTextBox.Text;
             int addressId;
@@ -40,13 +40,14 @@ namespace Appointment_System
                 string.IsNullOrEmpty(address) ||
                 string.IsNullOrEmpty(cityName) ||
                 string.IsNullOrEmpty(countryName) ||
-                string.IsNullOrEmpty(phoneNumber))
+                string.IsNullOrEmpty(phoneNumber)||
+                string.IsNullOrEmpty(postalCode))
             {
                 MessageBox.Show("Please enter all fields.");
             }
             else
             {
-
+                int convertedPostalCode = Int32.Parse(postalCode);
                 string INSERTCOUNTRY = "INSERT INTO country VALUES (NULL, @COUNTRYNAME, NOW(), 'test', NOW(),'test')";
 
                 MySqlConnection c = new MySqlConnection(connectionString);
@@ -72,7 +73,7 @@ namespace Appointment_System
                 MySqlCommand cmd3 = new MySqlCommand(INSERTADDRESS, c);
                 cmd3.Parameters.AddWithValue("@ADDRESS", address);
                 cmd3.Parameters.AddWithValue("@CITYID", cityId);
-                cmd3.Parameters.AddWithValue("@POSTALCODE", postalCode);
+                cmd3.Parameters.AddWithValue("@POSTALCODE", convertedPostalCode);
                 cmd3.Parameters.AddWithValue("@PHONENUMBER", phoneNumber);
                 cmd3.ExecuteNonQuery();
                 addressId = (int)cmd3.LastInsertedId;
