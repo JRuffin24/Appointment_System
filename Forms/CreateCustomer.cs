@@ -16,6 +16,7 @@ namespace Appointment_System
     public partial class CreateCustomer : Form
     {
         public static string connectionString = "server=127.0.0.1;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!;";
+       // public static string connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=passw0rd!;";
         public CreateCustomer()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Appointment_System
         {
             //get info from textboxes (Name, address, address 2, city name, country name, phone number) 
             //Insert into Customer Table 
-
+            //int minValuePostalCode = 0;
             string name = NameTextBox.Text;
             string address = AddressTextBox.Text;
             string address2 = Address2TextBox.Text;
@@ -41,13 +42,16 @@ namespace Appointment_System
                 string.IsNullOrEmpty(cityName) ||
                 string.IsNullOrEmpty(countryName) ||
                 string.IsNullOrEmpty(phoneNumber)||
-                string.IsNullOrEmpty(postalCode))
+              string.IsNullOrEmpty(postalCode) ) 
+                    
             {
                 MessageBox.Show("Please enter all fields.");
+                return;
             }
             else
             {
-                int convertedPostalCode = Int32.Parse(postalCode);
+                int convertedPostalCode = Convert.ToInt32(postalCode);
+
                 string INSERTCOUNTRY = "INSERT INTO country VALUES (NULL, @COUNTRYNAME, NOW(), 'test', NOW(),'test')";
 
                 MySqlConnection c = new MySqlConnection(connectionString);

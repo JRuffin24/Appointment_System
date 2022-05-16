@@ -18,6 +18,7 @@ namespace Appointment_System
     {
 
         public static string connectionString = "server=127.0.0.1;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!;";
+        //public static string connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=passw0rd!;";
         public static int appointmentId;
         public static DataTable dt = new DataTable();
 
@@ -52,10 +53,10 @@ namespace Appointment_System
 
 
             //DateTime start = TimeZoneInfo.ConvertTimeToUtc(StartPicker.Value);
-           // DateTime end = TimeZoneInfo.ConvertTimeToUtc(EndPicker.Value); 
+            //DateTime end = TimeZoneInfo.ConvertTimeToUtc(EndPicker.Value); 
 
             DateTime start = StartPicker.Value;
-            DateTime end = EndPicker.Value; 
+            DateTime end = EndPicker.Value;
 
             string ApptType = ApptTypeComboBox.Text;
             int CustId = int.Parse(AddApptCustIDTextBox.Text);
@@ -121,7 +122,7 @@ namespace Appointment_System
 
         public static bool ApptOutsideBusinessHours(DateTime startingTime, DateTime endingTime)
         {
-            startingTime = startingTime.ToLocalTime();
+            startingTime = startingTime.ToLocalTime();            
             endingTime = endingTime.ToLocalTime();
             DateTime BusinessStartTime = DateTime.Today.AddHours(8); //8:00AM
             DateTime BusinessEndTime = DateTime.Today.AddHours(17); //5PM
@@ -131,14 +132,21 @@ namespace Appointment_System
             {
                 return false;
             }
-            else
-            {
-                return true;
+            else 
+            { 
+                return true; 
             }
 
-           
+            //if (startingTime.TimeOfDay > BusinessStartTime.TimeOfDay && startingTime.TimeOfDay < BusinessEndTime.TimeOfDay
+            //   && endingTime.TimeOfDay > BusinessStartTime.TimeOfDay && endingTime.TimeOfDay < BusinessEndTime.TimeOfDay)
+            //{
+            //    return false;
+            //}
+            //return true;
 
-            
+            //Func<double, double> cube = x => x * x * x;
+
+
         }
 
         public static bool ApptHasConflict(DateTime startingTime, DateTime endingTime, DataTable appointments)
