@@ -36,6 +36,8 @@ namespace Appointment_System
             ViewAllApptsRadioButton.Checked = true;
 
             reminderCheck(calendarDataGrid);
+
+
         }
 
 
