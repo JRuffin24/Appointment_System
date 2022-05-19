@@ -27,6 +27,12 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            foreach(DataRow row in dt.Rows)
+            {
+                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
+                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+            }
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -109,6 +115,11 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
+                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+            }
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -127,6 +138,11 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
+                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+            }
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -145,6 +161,11 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
+                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+            }
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
