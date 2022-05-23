@@ -28,8 +28,8 @@ namespace Appointment_System
             InitializeComponent();
             ApptCustIDTextBox.Text = appointment.custId.ToString();
             ApptIdTextBox.Text = appointment.apptId.ToString();
-            ApptStartPicker.Value = TimeZoneInfo.ConvertTimeToUtc( appointment.start);
-            ApptEndPicker.Value = TimeZoneInfo.ConvertTimeToUtc(appointment.end);
+            ApptStartPicker.Value = appointment.start;
+            ApptEndPicker.Value = appointment.end;
             ApptTypeComboBox.Text = appointment.type;
             ApptIdTextBox.ReadOnly = true;
             ApptCustIDTextBox.ReadOnly = true;
