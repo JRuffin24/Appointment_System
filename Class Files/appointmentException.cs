@@ -11,12 +11,12 @@ namespace Appointment_System
     {
         public void businessHours()
         {
-            MessageBox.Show("Exception occured, appointments need to be within normal business hours");
+            MessageBox.Show("Error! Appointments need to be within normal business hours");
         }
 
         public void appOverlap()
         {
-            MessageBox.Show("Exception occured, your appointment time is conflicting with an already present appointment");
+            MessageBox.Show("Error! Your appointment time is conflicting with an already present appointment");
         }
     }
 }

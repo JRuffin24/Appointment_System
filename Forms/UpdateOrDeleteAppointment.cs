@@ -59,7 +59,7 @@ namespace Appointment_System
 
             try
             {
-                if (AddAppointment.ApptHasConflict(ApptStartPicker.Value,ApptEndPicker.Value, dt))
+                if (AddAppointment.ApptHasConflict(ApptStartPicker.Value,ApptEndPicker.Value))
                 {
                     throw new appointmentException();
                 }
