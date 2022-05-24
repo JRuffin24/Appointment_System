@@ -43,6 +43,8 @@ namespace Appointment_System
             AddApptCustNameTextBox.Text = customer.name;
             AddApptCustNameTextBox.ReadOnly = true;
             AddApptCustIDTextBox.ReadOnly = true;
+
+
         }
 
         private void AddApptScheduleButton_Click(object sender, EventArgs e)
@@ -140,17 +142,31 @@ namespace Appointment_System
 
         }
 
-        public static bool ApptHasConflict(DateTime startingTime, DateTime endingTime, DataTable appointments)
+        public static bool ApptHasConflict(DateTime startingTime, DateTime endingTime, DataTable dt)
         {
-            for (int i = 0; i < appointments.Rows.Count; i++)
-            {
-                DateTime ApptStart = Convert.ToDateTime(appointments.Rows[i]["start"]);
-                DateTime ApptEnd = Convert.ToDateTime(appointments.Rows[i]["end"]);
 
-                if (startingTime < ApptStart && ApptEnd < endingTime)
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    DateTime ApptStart = DateTime.Parse(dt.Rows[i]["start"].ToString());
+            //    DateTime ApptEnd = DateTime.Parse(dt.Rows[i]["end"].ToString());
+
+            //    if ((startingTime < ApptEnd) && (ApptStart < endingTime))
+            //    {
+            //        return true;
+            //    }
+            //}
+
+            //return false;
+            foreach (DataRow row in dt.Rows)
+            {
+
+                //DateTime ApptEnd = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+
+                if ((startingTime < DateTime.Parse(row["end"].ToString())) && (DateTime.Parse(row["start"].ToString()) < endingTime))
                 {
                     return true;
                 }
+
             }
 
             return false;

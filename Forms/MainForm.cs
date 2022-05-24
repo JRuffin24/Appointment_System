@@ -61,20 +61,7 @@ namespace Appointment_System
             }
         }
 
-        //static public void reminderCheck(DataGridView calendar)
-        //{
-        //    foreach (DataGridViewRow row in calendar.Rows)
-        //    {
-        //        DateTime now = DateTime.UtcNow;
-        //        DateTime start = DateTime.Parse(row.Cells[4].Value.ToString()).ToUniversalTime();
-        //        Minutes interval = Minutes.minBetween(now, start);
-        //        Minutes minInterval = Minutes.minutes(15);
-        //        if (interval.isLessThan(minInterval)
-        //        {
-        //            MessageBox.Show($"Reminder: You have a meeting with {row.Cells[2].Value} at {row.Cells[4].Value}");
-        //        }
-        //    }
-        //}
+       
 
         private void NewAppointmentButton_Click(object sender, EventArgs e)
         {
