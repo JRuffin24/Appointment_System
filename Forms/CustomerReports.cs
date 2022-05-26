@@ -22,6 +22,7 @@ namespace Appointment_System
         public CustomerReports()
         {
             InitializeComponent();
+            
             resultTextBox.ReadOnly = true;
             ReportResultTextBox.ReadOnly = true;
             populateComboBox();
@@ -59,6 +60,8 @@ namespace Appointment_System
 
         private void ConsultantSearchButton_Click(object sender, EventArgs e)
         {
+            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
+            DateTime Now = DateTime.Now;
             string CustomerAppointments = $"SELECT customer.customerName, appointment.appointmentId, appointment.type,  appointment.start, appointment.end, user.userName FROM customer INNER JOIN appointment ON appointment.customerId = customer.customerId INNER JOIN user ON appointment.userId = user.userId WHERE user.userName = @USERNAME ";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -109,7 +112,9 @@ namespace Appointment_System
            
             mainForm.Show();
         }
-
-       
+        private void SystemEvents_TimeChanged(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
+        }
     }
 }

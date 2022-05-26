@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySql.Data;
 
+
 namespace Appointment_System
 {
     public partial class MainForm : Form
@@ -19,6 +20,7 @@ namespace Appointment_System
         public MainForm()
         {
             InitializeComponent();
+            
             string CustomerAppointments = $"SELECT appointment.appointmentId, user.userName, customer.customerName, appointment.type,  appointment.start, appointment.end, address.address, city.city, country.country, address.phone, address.postalCode  FROM customer INNER JOIN address ON customer.addressId = address.addressId INNER JOIN city  ON address.cityId = city.cityId INNER JOIN country ON city.countryId = country.countryId  INNER JOIN appointment   ON appointment.customerId = customer.customerId INNER JOIN user ON appointment.userId = user.userId ";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -27,9 +29,9 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-
+            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             foreach(DataRow row in dt.Rows)
-            {
+            {DateTime Now = DateTime.Now;
                 DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
                 DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
             }
@@ -40,9 +42,10 @@ namespace Appointment_System
             calendarDataGrid.AllowUserToAddRows = false;
             calendarDataGrid.RowHeadersVisible = false;
             ViewAllApptsRadioButton.Checked = true;
-
+            
             reminderCheck(calendarDataGrid);
-
+            
+            
 
         }
 
@@ -108,7 +111,8 @@ namespace Appointment_System
       
 
         private void ViewAllApptsRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
+        {   
+            
             string CustomerAppointments = $"SELECT appointment.appointmentId, user.userName, customer.customerName, appointment.type,  appointment.start, appointment.end, address.address, city.city, country.country, address.phone, address.postalCode  FROM customer INNER JOIN address ON customer.addressId = address.addressId INNER JOIN city  ON address.cityId = city.cityId INNER JOIN country ON city.countryId = country.countryId  INNER JOIN appointment   ON appointment.customerId = customer.customerId INNER JOIN user ON appointment.userId = user.userId ";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -117,8 +121,11 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
+System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             foreach (DataRow row in dt.Rows)
             {
+        
+                DateTime Now = DateTime.Now;
                 DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
                 DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
             }
@@ -128,10 +135,12 @@ namespace Appointment_System
             calendarDataGrid.MultiSelect = false;
             calendarDataGrid.AllowUserToAddRows = false;
             calendarDataGrid.RowHeadersVisible = false;
+           
         }
 
         private void ViewMonthlyApptsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            
             string CustomerAppointments = $"SELECT appointment.appointmentId, user.userName, customer.customerName, appointment.type,  appointment.start, appointment.end, address.address, city.city, country.country, address.phone, address.postalCode FROM customer INNER JOIN address ON customer.addressId = address.addressId INNER JOIN city ON address.cityId = city.cityId INNER JOIN country ON city.countryId = country.countryId  INNER JOIN appointment ON appointment.customerId = customer.customerId INNER JOIN user ON appointment.userId = user.userId where month(start) = Month(current_date()) ";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -140,8 +149,9 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
+            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             foreach (DataRow row in dt.Rows)
-            {
+            {DateTime Now = DateTime.Now;
                 DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
                 DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
             }
@@ -151,10 +161,13 @@ namespace Appointment_System
             calendarDataGrid.MultiSelect = false;
             calendarDataGrid.AllowUserToAddRows = false;
             calendarDataGrid.RowHeadersVisible = false;
+            
+            
         }
 
         private void WeeklyApptRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            
             String CustomerAppointmentsByWeek = $"SELECT appointment.appointmentId, user.userName, customer.customerName, appointment.type,  appointment.start, appointment.end, address.address, city.city, country.country, address.phone, address.postalCode  FROM customer INNER JOIN address ON customer.addressId = address.addressId INNER JOIN city  ON address.cityId = city.cityId INNER JOIN country ON city.countryId = country.countryId  INNER JOIN appointment   ON appointment.customerId = customer.customerId INNER JOIN user ON appointment.userId = user.userId where month(start) = month(current_date()) and week(start) = week(current_date())";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -163,8 +176,9 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
+            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             foreach (DataRow row in dt.Rows)
-            {
+            {   DateTime Now = DateTime.Now;
                 DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
                 DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
             }
@@ -174,6 +188,12 @@ namespace Appointment_System
             calendarDataGrid.MultiSelect = false;
             calendarDataGrid.AllowUserToAddRows = false;
             calendarDataGrid.RowHeadersVisible = false;
+            
+            
         }
+        //private void SystemEvents_TimeChanged(object sender, EventArgs e)
+        //{
+        //    System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
+        //}
     }
 }

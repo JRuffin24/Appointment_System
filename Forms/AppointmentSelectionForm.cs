@@ -19,6 +19,8 @@ namespace Appointment_System
         public AppointmentSelectionForm()
         {
             InitializeComponent();
+            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
+            DateTime Now = DateTime.Now;
             string SHOWAPPTS = "SELECT * FROM appointment";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -39,6 +41,8 @@ namespace Appointment_System
             ApptSelectionGrid.MultiSelect = false;
             ApptSelectionGrid.AllowUserToAddRows = false;
             ApptSelectionGrid.RowHeadersVisible = false;
+            
+
         }
 
         private void EditAppointment_Click(object sender, EventArgs e)
@@ -70,5 +74,9 @@ namespace Appointment_System
             mainForm.Show();
         }
 
+        //private void SystemEvents_TimeChanged(object sender, EventArgs e)
+        //{
+        //    System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
+        //}
     }
 }
