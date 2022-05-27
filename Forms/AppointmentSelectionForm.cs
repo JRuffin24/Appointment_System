@@ -29,10 +29,11 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
-            foreach (DataRow row in dt.Rows)
+
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
-                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+                dt.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                dt.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
 
             ApptSelectionGrid.DataSource = dt;
@@ -74,9 +75,6 @@ namespace Appointment_System
             mainForm.Show();
         }
 
-        //private void SystemEvents_TimeChanged(object sender, EventArgs e)
-        //{
-        //    System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-        //}
+        
     }
 }

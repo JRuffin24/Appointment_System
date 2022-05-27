@@ -60,8 +60,7 @@ namespace Appointment_System
 
         private void ConsultantSearchButton_Click(object sender, EventArgs e)
         {
-            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-            DateTime Now = DateTime.Now;
+           
             string CustomerAppointments = $"SELECT customer.customerName, appointment.appointmentId, appointment.type,  appointment.start, appointment.end, user.userName FROM customer INNER JOIN appointment ON appointment.customerId = customer.customerId INNER JOIN user ON appointment.userId = user.userId WHERE user.userName = @USERNAME ";
             MySqlConnection c = new MySqlConnection(connectionString);
             c.Open();
@@ -71,7 +70,14 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
-           
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                dt.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["end"], TimeZoneInfo.Local).ToString();
+            }
+
             UserScheduleDG.DataSource = dt;
             UserScheduleDG.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             UserScheduleDG.ReadOnly = true;
@@ -112,9 +118,6 @@ namespace Appointment_System
            
             mainForm.Show();
         }
-        private void SystemEvents_TimeChanged(object sender, EventArgs e)
-        {
-            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-        }
+      
     }
 }

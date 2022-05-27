@@ -29,12 +29,13 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-            foreach(DataRow row in dt.Rows)
-            {DateTime Now = DateTime.Now;
-                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
-                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+           
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                dt.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
+
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -44,8 +45,6 @@ namespace Appointment_System
             ViewAllApptsRadioButton.Checked = true;
             
             reminderCheck(calendarDataGrid);
-            
-            
 
         }
 
@@ -121,14 +120,13 @@ namespace Appointment_System
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
-System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-            foreach (DataRow row in dt.Rows)
+
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-        
-                DateTime Now = DateTime.Now;
-                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
-                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+                dt.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                dt.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
+
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -149,12 +147,15 @@ System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
-            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-            foreach (DataRow row in dt.Rows)
-            {DateTime Now = DateTime.Now;
-                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
-                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+            
+
+            for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                dt.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
+
+           
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -176,12 +177,14 @@ System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             da.Fill(dt);
-            System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-            foreach (DataRow row in dt.Rows)
-            {   DateTime Now = DateTime.Now;
-                DateTime start = DateTime.Parse(row["start"].ToString()).ToLocalTime();
-                DateTime end = DateTime.Parse(row["end"].ToString()).ToLocalTime();
+         
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                dt.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
+
             calendarDataGrid.DataSource = dt;
             calendarDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDataGrid.ReadOnly = true;
@@ -191,9 +194,6 @@ System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
             
             
         }
-        //private void SystemEvents_TimeChanged(object sender, EventArgs e)
-        //{
-        //    System.Globalization.CultureInfo.CurrentCulture.ClearCachedData();
-        //}
+       
     }
 }
